@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Home',
+    'Users',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             BASE_DIR / 'Home/templates',
+            BASE_DIR / 'Users/templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -121,6 +123,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'Home/static',
+    BASE_DIR / 'Users/static',
 ]
 
 # Default primary key field type
