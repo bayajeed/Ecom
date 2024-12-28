@@ -32,4 +32,9 @@ class CustomUser(AbstractUser):
 
 
     def __str__(self):
-        return f'{self.username}'
+        return f'{self.username} - {self.name} - {self.email}'
+    
+    # change customer to customers in admin panel
+    class Meta:
+        verbose_name = 'Customer'
+        verbose_name_plural = 'Customers'

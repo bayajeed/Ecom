@@ -11,7 +11,14 @@
 </head>
 
 <body>
-    <h1 class="col">This is the User Page</h1>
+    <h1 class="col">Login</h1>
+    <form action="{% url 'userLogin' %}" method="POST">
+        {% csrf_token %}
+        <div class="container">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </div>
 </body>
 <script src="{% static 'js/UsersMain.js' %}"></script>
 

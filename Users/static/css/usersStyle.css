@@ -3,3 +3,8 @@
     font-size: 50px;
     text-align: center;
 }
+.container{
+    margin: 100px;
+    background-color: gray;
+    padding: 50px;    
+}
