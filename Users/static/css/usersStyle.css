@@ -1,10 +1,19 @@
 .col{
-    color: red;
+    color: green;
     font-size: 50px;
     text-align: center;
 }
 .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     margin: 100px;
     background-color: gray;
     padding: 50px;    
+}
+input{
+    width: 50%;
+    padding: 10px;
+    margin: 10px;
 }
