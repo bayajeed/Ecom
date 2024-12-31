@@ -12,7 +12,7 @@
 
 <body>
     <h1 class="col">SignUp</h1>
-    <form action="{% url 'signin' %}" method="POST">
+    <form action="{% url 'signup' %}" method="POST">
         {% csrf_token %}
         <div class="container">
             <input type="text" name="username" placeholder="Username" required>

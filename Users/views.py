@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from Users.models import CustomUser
 from Home.views import home
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
-from django.contrib.auth.hashers import check_password
+from django.contrib.auth import authenticate, login, logout # type: ignore
+from django.contrib.auth.models import User # type: ignore
+from django.contrib.auth.hashers import check_password # type: ignore
+
+#from django.http import HttpResponse
 # Create your views here.
 def signin(request):
     if request.method == 'POST':
@@ -32,6 +34,7 @@ def signup(request):
             user = CustomUser.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name) # Create a new user
             user.save()
             return redirect(signin) # Redirect to the login page
+            #return HttpResponse('User created successfully')
         #user = CustomUser.objects.create_user(username=username, password=password, email=email) # Create a new user
         #print(username, email, first_name, last_name, password, password2) # print hoyna keno?
         # user.save() # Save the user
