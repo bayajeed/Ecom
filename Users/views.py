@@ -11,7 +11,13 @@ def signin(request):
     if request.method == 'POST':
         username = request.POST.get('username') # Get the username from the form
         password = request.POST.get('password') # Get the password from the form
-        user = CustomUser.objects.get(username=username) # Get the user with the username
+        # user = CustomUser.objects.get(username=username) # Get the user with the username
+        try:
+            user = CustomUser.objects.get(username=username) # Get the user with the username
+        except:
+            context = {'message': 'User does not exist'}
+            return render(request, 'signin.html', context)
+            #return render(request, 'signin.html', {'message': 'User does not exist'})
         if check_password(password, user.password):
             login(request, user)
             return redirect('home') # Redirect to the home page
@@ -40,3 +46,6 @@ def signup(request):
         # user.save() # Save the user
         #return redirect('login') # Redirect to the login page
     return render(request, 'signup.html')
+
+
+
