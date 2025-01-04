@@ -21,10 +21,12 @@ def signin(request):
         if check_password(password, user.password):
             login(request, user)
             return redirect('home') # Redirect to the home page
-        if user is not None:
-            login(request, user)
-            return redirect('home') # Redirect to the home page
-        return render(request, 'signin.html', {'error': 'Invalid credentials'})
+        context = {'message': 'Invalid Password'}
+        # nicher code run dile password check kore na
+        # if user is not None:
+        #     login(request, user)
+        #     return redirect('home') # Redirect to the home page
+        return render(request, 'signin.html', context)
     return render(request, 'signin.html')
 
 # kaj koyna..............
