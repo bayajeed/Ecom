@@ -1,25 +1,21 @@
 {% load static %}
 <html>
-  
 <head>
-        <title>All Products</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'products/css/all_products.css' %}">
-    </head>
+    <title>All Products</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'products/css/all_products.css' %}">
+</head>
     <body>
-        <h1>All Products</h1>
+        <h1>Products Details</h1>
         <div class="products">
-            {% for product in products %}
             <div class="product">
                 <h2>{{ product.name}}</h2>
                 <img src="{{ product.image.url }}" alt="{{ product.name }}", width="150" height="150">
                 <p id="description">{{ product.description }}</p>
                 <p id="price">Price: {{ product.price}}</p>
                 <del><p id="base_price">Base Price: {{ product.base_price}}</p></del>
-                <a href="{% url 'product_detail' product.id %}">Details</a>
                 <hr>
             </div>
-            {% endfor %}
-
         </div>
     </body>
 </html>
+

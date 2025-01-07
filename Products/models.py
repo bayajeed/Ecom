@@ -29,3 +29,14 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
+
+# products review
+#     user
+#     product
+#     review
+#     //rating
+#     date
+#     status
+
+# all reviews
+# individual reviews
