@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Product, Category , Review
 
 
@@ -24,11 +24,23 @@ def product_detail(request, id):
     return render(request, 'product_detail.html', context)
 
 def product_review(request, id):
-    try:
-        review = Review.objects.get(id = id)
-    except Review.DoesNotExist:
-        review = None
-    context = {
-        'review' : review
-    }
+    if request.method == 'POST':
+        #user = request.user
+        product = Product.objects.get(id = id)
+        review_text = request.POST.get('review_text')
+        rating = request.POST.get('rating')
+        review = Review(product = product, review_text = review_text, rating = rating)
+        review.save()
+        return redirect('product_review', id = id)
+    
+    if request.method == 'GET':
+        try:
+            review = Review.objects.get(product = id)
+        except Review.DoesNotExist:
+            review = None
+        context = {
+            'review': review,
+            'product': Product.objects.get(id = id)
+        }
+    
     return render(request, 'product_review.html', context)

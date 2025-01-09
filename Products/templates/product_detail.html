@@ -16,7 +16,8 @@
 
                 <form action="{% url 'product_review' product.id %}" method="post">
                     {% csrf_token %}
-                    <textarea name="review" id="text-area"></textarea>
+                    <input type="text" name="review_text" placeholder="Review">
+                    <input type="number" name="rating" placeholder="Rating">
                     <input type="submit" value="Review">
                 </form>
 

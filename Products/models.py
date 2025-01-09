@@ -1,5 +1,5 @@
 from django.db import models
-#from django.conf import settings
+from django.conf import settings
 
 # Create your models here.
 
@@ -32,15 +32,15 @@ class Product(models.Model):
         verbose_name_plural = 'Products'
 
 class Review(models.Model):
-    #user = models.ForeignKey('auth.User', on_delete = models.CASCADE)
+    #user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    review = models.TextField(max_length=500)
+    review_text = models.TextField(max_length=500)
     date = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField(default=True)
     rating = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.review
+        return f'{self.review_text} - {self.rating}'
     class Meta:
         verbose_name = 'Review'
         verbose_name_plural = 'Reviews'

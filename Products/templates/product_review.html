@@ -5,16 +5,18 @@
     <link rel="stylesheet" type="text/css" href="{% static 'products/css/all_products.css' %}">
 </head>
     <body>
-        <h1>Review</h1>
+        <h1>Review for {{ product.name}}</h1>
         <div class="products">
             <div class="product">
-                <h2>{{ review.product}}</h2>
+                <h2>{{ product.name}}</h2>
                 <img src="{{ product.image.url }}" alt="{{ product.name }}", width="150" height="150">
                 <p id="description">{{ product.description }}</p>
                 <p id="price">Price: {{ product.price}}</p>
-                <del><p id="base_price">Base Price: {{ re.base_price}}</p></del>
-                <p>Review: {{product.id}}</p>
-                <p>Review: {{review.review}}</p>
+                <del><p id="base_price">Base Price: {{ product.base_price}}</p></del>
+                <h3>Review</h3>
+                <p>Review ID: {{review.id}}</p>
+                <p>Review: {{review.review_text}}</p>
+                <p>Rating: {{ review.rating }}</p>
                 <hr>
             </div>
         </div>
