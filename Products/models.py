@@ -1,9 +1,10 @@
 from django.db import models
+#from django.conf import settings
 
 # Create your models here.
 
 class Category(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, default="Uncategorized")
     description = models.TextField()
     image = models.ImageField(upload_to = 'category_images/', blank= True, null = True)
     
@@ -29,6 +30,20 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
+
+class Review(models.Model):
+    #user = models.ForeignKey('auth.User', on_delete = models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    review = models.TextField(max_length=500)
+    date = models.DateTimeField(auto_now_add=True)
+    status = models.BooleanField(default=True)
+    rating = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.review
+    class Meta:
+        verbose_name = 'Review'
+        verbose_name_plural = 'Reviews'
 
 # products review
 #     user

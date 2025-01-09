@@ -5,21 +5,16 @@
     <link rel="stylesheet" type="text/css" href="{% static 'products/css/all_products.css' %}">
 </head>
     <body>
-        <h1>Products Details</h1>
+        <h1>Review</h1>
         <div class="products">
             <div class="product">
-                <h2>{{ product.name}}</h2>
+                <h2>{{ review.product}}</h2>
                 <img src="{{ product.image.url }}" alt="{{ product.name }}", width="150" height="150">
                 <p id="description">{{ product.description }}</p>
                 <p id="price">Price: {{ product.price}}</p>
-                <del><p id="base_price">Base Price: {{ product.base_price}}</p></del>
-
-                <form action="{% url 'product_review' product.id %}" method="post">
-                    {% csrf_token %}
-                    <textarea name="review" id="text-area"></textarea>
-                    <input type="submit" value="Review">
-                </form>
-
+                <del><p id="base_price">Base Price: {{ re.base_price}}</p></del>
+                <p>Review: {{product.id}}</p>
+                <p>Review: {{review.review}}</p>
                 <hr>
             </div>
         </div>

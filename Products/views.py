@@ -1,19 +1,13 @@
 from django.shortcuts import render
-from .models import Product, Category
+from .models import Product, Category , Review
 
 
 # Create your views here.
 
 def all_products(request):
     all_products = Product.objects.all()
-    # for product in all_products:
-    #     print("*"*50)
-    #     print("product ID:" , product.id)
-    #     print("name:", product.name)
-    #     print("price:", product.price)
-    #     print(product.description)
-    #     print("*"*50)
-
+    for product in all_products:
+        print(product.id)
     context = {
         'products': all_products
     }
@@ -29,3 +23,12 @@ def product_detail(request, id):
     }
     return render(request, 'product_detail.html', context)
 
+def product_review(request, id):
+    try:
+        review = Review.objects.get(id = id)
+    except Review.DoesNotExist:
+        review = None
+    context = {
+        'review' : review
+    }
+    return render(request, 'product_review.html', context)
