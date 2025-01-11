@@ -35,7 +35,8 @@ def product_review(request, id):
     
     if request.method == 'GET':
         try:
-            review = Review.objects.get(product = id)
+            review = Review.objects.get(product = id) # product = id dilam keno?
+            # review = Review.objects.get(product = Product.objects.get(id = id))
         except Review.DoesNotExist:
             review = None
         context = {

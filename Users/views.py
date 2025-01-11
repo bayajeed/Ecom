@@ -48,6 +48,8 @@ def signup(request):
         # user.save() # Save the user
         #return redirect('login') # Redirect to the login page
     return render(request, 'signup.html')
+    
+
 
 
 

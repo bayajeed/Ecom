@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Home',
     'Users',
     'Products',
+    'Orders',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +62,7 @@ TEMPLATES = [
             BASE_DIR / 'Home/templates',
             BASE_DIR / 'Users/templates',
             BASE_DIR / 'Products/templates',
+            BASE_DIR / 'Orders/templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -127,6 +129,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'Home/static',
     BASE_DIR / 'Users/static',
     BASE_DIR / 'Products/static',
+    BASE_DIR / 'Orders/static',
 ]
 
 # for media files
