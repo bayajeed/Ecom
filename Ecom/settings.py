@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'Users',
     'Products',
     'Orders',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -106,6 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+    
 ]
 
 

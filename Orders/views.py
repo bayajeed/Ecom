@@ -14,7 +14,8 @@ def CartView(request):
         cart = Cart.objects.create(user = user)
     cart_items = Cart.products.through.objects.filter(cart = cart)
     contex = {
-        'cart_items': cart_items
+        'cart_items': cart_items,
+        'cart': cart
     }
     return render(request, 'cart.html', contex)
 

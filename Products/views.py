@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Product, Category , Review
+from .serializers import CategorySerializer
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 
 # Create your views here.
@@ -31,11 +34,13 @@ def product_review(request, id):
         rating = request.POST.get('rating')
         review = Review(product = product, review_text = review_text, rating = rating)
         review.save()
+        
         return redirect('product_review', id = id)
+    
     
     if request.method == 'GET':
         try:
-            review = Review.objects.get(product = id) # product = id dilam keno?
+            review = Review.objects.get(product = id)
             # review = Review.objects.get(product = Product.objects.get(id = id))
         except Review.DoesNotExist:
             review = None
@@ -43,5 +48,12 @@ def product_review(request, id):
             'review': review,
             'product': Product.objects.get(id = id)
         }
-    
+
     return render(request, 'product_review.html', context)
+
+# api view
+class CategoryAPIView(APIView):
+    def get(self, request): 
+        categories = Category.objects.all()
+        serializer = CategorySerializer(categories, many = True) # many = True dile multiple data return korbe jeson format e 
+        return Response(serializer.data) 
