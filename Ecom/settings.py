@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'Orders',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -149,3 +150,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # define the custom user model / deafulat user model
 AUTH_USER_MODEL = 'Users.CustomUser' # CustomUser is the model name in Users app
+
+# rest_framework default authentication settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+# Simple JWT settings
+from datetime import timedelta
+SIMPLE_JWT = {
+    'ACCESS_token_LIFETIME': timedelta(minutes = 5),
+    'REFRESH_token_LIFETIME': timedelta(days = 1),
+    'ROTATE_REFRESH_TOKENS': False, # aki token multiple bar use kora jabe na
+    'BLACKLIST_AFTER_ROTATION': True, # akta token akbar use korar por onno bar use kora jabe na
+    'UPDATE_LAST_LOGIN': False,
+}
