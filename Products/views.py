@@ -169,3 +169,8 @@ class CategoryViewSet(ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [CustomPermission] # use custom permission, user must be authenticated and superuser to access the API
+
+    def list(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().list(request, *args, **kwargs)
+        return Response(status = status.HTTP_401_UNAUTHORIZED)

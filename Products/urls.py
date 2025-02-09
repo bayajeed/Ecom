@@ -16,4 +16,7 @@ urlpatterns = [
     path('api/CategoryDetailAPIView/<int:id>', CategoryDetailAPIView.as_view(), name = 'CategoryDetail')
 
     
+    
 ] + router.urls
+
+
